@@ -1,0 +1,44 @@
+{
+    "project_name": "Artemis",
+    "project_slug": "artemis",
+    "domain_main": "artemis.com",
+    "domain_staging": "stag.artemis",
+
+    "docker_swarm_stack_name_main": "artemis.com",
+    "docker_swarm_stack_name_staging": "stag.artemis",
+
+    "secret_key": "passwordForNow",
+    "first_superuser": "admin@artemis.com",
+    "first_superuser_password": "password",
+    "backend_cors_origins": "[\"http://localhost\", \"http://localhost:4200\", \"http://localhost:3000\", \"http://localhost:8080\", \"https://localhost\", \"https://localhost:4200\", \"https://localhost:3000\", \"https://localhost:8080\", \"http://dev.{{artemis.domain_main}}\", \"https://{{artemis.domain_staging}}\", \"https://{{artemis.domain_main}}\", \"http://local.dockertoolbox.tiangolo.com\", \"http://localhost.tiangolo.com\"]",
+    "smtp_port": "587",
+    "smtp_host": "",
+    "smtp_user": "",
+    "smtp_password": "",
+    "smtp_emails_from_email": "info@artemis.com",
+
+    "postgres_password": "changethis",
+    "pgadmin_default_user": "admin",
+    "pgadmin_default_user_password": "password",
+
+    "traefik_constraint_tag": "artemis.com",
+    "traefik_constraint_tag_staging": "stag.artemis",
+    "traefik_public_constraint_tag": "traefik-public",
+
+    "flower_auth": "admin:password",
+
+    "sentry_dsn": "",
+
+    "docker_image_prefix": "",
+
+    "docker_image_backend": "artemisbackend",
+    "docker_image_celeryworker": "artemisceleryworker",
+    "docker_image_frontend": "artemisfrontend",
+
+    "_copy_without_render": [
+        "frontend/src/**/*.html",
+        "frontend/src/**/*.vue",
+        "frontend/node_modules/*",
+        "backend/app/app/email-templates/**"
+    ]
+}
