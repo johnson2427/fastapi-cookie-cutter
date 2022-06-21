@@ -1,5 +1,20 @@
 # FastAPI Cookie Cutter Project
-FastAPI application for Hockey Betting Solution
+FastAPI Cookie Cutter
+Tech Stack includes:
+* FastAPI - Backend
+* Vue.js - Frontend
+* Celery - Backend for long running tasks
+* PostgreSQL - SQL Database solution
+* MongoDB - NoSQL Database solution
+* RabbitMQ - Message Broker
+* Redis - Caching Database
+* Flower - UI for Celery, Rabbit, Redis
+* Traefik - Load balancer
+* PGAdmin - Administration tool for PostgreSQL
+* Mongo-Express - Administration tool for MongoDB
+
+Must set up a Sentry server for the Logging Aggregator on your own at the moment.
+
 
 # Prerequisites
 The latest release requires:
