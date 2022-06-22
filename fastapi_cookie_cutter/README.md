@@ -10,6 +10,39 @@
 
 * Node.js (with `npm`).
 
+## Backend local development with PyCharm
+
+Following running through the set up with PyCharm, be sure to continue through the rest of this document
+to get familiar with the rest of the setup.
+
+Later on in this document, you will be asked to open your text editor from the ./backend/app folder. This
+is a walk-through to allow you to avoid this step, and also allows you to have full control over the entire
+full-stack project during the debugging and development process.
+
+PyCharm has an extremely powerful debugging tool. To remove this basic functionality from the development
+process would be criminal. And the development process explained throughout the rest of this document
+circumvents any ability to properly develop within an IDE.
+
+You have the choice to develop strictly through docker and docker-compose. But this gives you the power of 
+PyCharm and the PyCharm Debugger, while also giving you the capacity to hot-reload through the docker-compose.
+
+## Set up the Pycharm Environment
+
+* Go to File > Settings > Build, Execution, Deployment > Console > Python Console
+  * Note: Python Console is in the dropdown of Console not actually inside of Console
+
+* Set your working directory as /home/User/path/to/Kerkopes/kerkopes/backend/app
+
+* Go to Select Run/Debug Configuration and choose Edit Configurations
+  * Add a new environment and choose FastAPI as your configuration
+  * Set your Application file to /home/User/path/to/Kerkopes/kerkopes/backend/app/app/main.py
+  * Set your working directory as /home/User/path/to/Kerkopes/kerkopes/backend/app
+  * Set all of your Environment Variables (Most of these come from the kerkopes-config-file.yml)
+
+* Run the play button, if it fails, add the environment variable(s) that are missing until it runs
+
+* Once running, you can begin your development process
+
 ## Backend local development
 
 * Start the stack with Docker Compose:
