@@ -40,12 +40,12 @@ jobs:
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Run Black
-          run:
+          run: |
             cd fastapi_cookie_cutter/backend/app
             poetry run black --check .
 
         - name: Run flake8
-          run:
+          run: |
             cd fastapi_cookie_cutter/backend/app
             poetry run flake8 .
 
