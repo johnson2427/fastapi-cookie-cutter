@@ -7,7 +7,7 @@ set -e
 
 rm -rf ./testing-project
 
-artemis --no-input -f ./ project_name="Testing Project"
+fastapi-cookie-cutter --no-input -f ./ project_name="Testing Project"
 
 cd ./testing-project
 

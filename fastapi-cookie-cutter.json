@@ -1,0 +1,44 @@
+{
+    "project_name": "fastapi-cookie-cutter",
+    "project_slug": "fastapi-cookie-cutter",
+    "domain_main": "fastapi-cookie-cutter.com",
+    "domain_staging": "stag.fastapi-cookie-cutter",
+
+    "docker_swarm_stack_name_main": "fastapi-cookie-cutter.com",
+    "docker_swarm_stack_name_staging": "stag.fastapi-cookie-cutter",
+
+    "secret_key": "passwordForNow",
+    "first_superuser": "admin@fastapi-cookie-cutter.com",
+    "first_superuser_password": "password",
+    "backend_cors_origins": "[\"http://localhost\", \"http://localhost:4200\", \"http://localhost:3000\", \"http://localhost:8080\", \"https://localhost\", \"https://localhost:4200\", \"https://localhost:3000\", \"https://localhost:8080\", \"http://dev.{{fastapi-cookie-cutter.domain_main}}\", \"https://{{fastapi-cookie-cutter.domain_staging}}\", \"https://{{fastapi-cookie-cutter.domain_main}}\", \"http://local.dockertoolbox.tiangolo.com\", \"http://localhost.tiangolo.com\"]",
+    "smtp_port": "587",
+    "smtp_host": "",
+    "smtp_user": "",
+    "smtp_password": "",
+    "smtp_emails_from_email": "info@fastapi-cookie-cutter.com",
+
+    "postgres_password": "changethis",
+    "pgadmin_default_user": "admin",
+    "pgadmin_default_user_password": "password",
+
+    "traefik_constraint_tag": "fastapi-cookie-cutter.com",
+    "traefik_constraint_tag_staging": "stag.fastapi-cookie-cutter",
+    "traefik_public_constraint_tag": "traefik-public",
+
+    "flower_auth": "admin:password",
+
+    "sentry_dsn": "",
+
+    "docker_image_prefix": "",
+
+    "docker_image_backend": "fastapi-cookie-cutterbackend",
+    "docker_image_celeryworker": "fastapi-cookie-cutterceleryworker",
+    "docker_image_frontend": "fastapi-cookie-cutterfrontend",
+
+    "_copy_without_render": [
+        "frontend/src/**/*.html",
+        "frontend/src/**/*.vue",
+        "frontend/node_modules/*",
+        "backend/app/app/email-templates/**"
+    ]
+}

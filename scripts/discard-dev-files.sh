@@ -2,12 +2,12 @@
 
 set -e
 
-rm -rf artemis/.git
-rm -rf artemis/backend/app/poetry.lock
-rm -rf artemis/frontend/node_modules
-rm -rf artemis/frontend/dist
-git checkout artemis/README.md
-git checkout artemis/.gitlab-ci.yml
-git checkout artemis/artemis-config-file.yml
-git checkout artemis/.env
-git checkout artemis/frontend/.env
+rm -rf fastapi-cookie-cutter/.git
+rm -rf fastapi-cookie-cutter/backend/app/poetry.lock
+rm -rf fastapi-cookie-cutter/frontend/node_modules
+rm -rf fastapi-cookie-cutter/frontend/dist
+git checkout fastapi-cookie-cutter/README.md
+git checkout fastapi-cookie-cutter/.gitlab-ci.yml
+git checkout fastapi-cookie-cutter/fastapi-cookie-cutter-config-file.yml
+git checkout fastapi-cookie-cutter/.env
+git checkout fastapi-cookie-cutter/frontend/.env
