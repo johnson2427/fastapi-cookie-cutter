@@ -34,7 +34,9 @@ jobs:
             poetry config virtualenvs.path ~/.virtualenvs
 
         - name: Install Dependencies
-          run: poetry install
+          run: |
+            cd ./fastapi_cookie_cutter/backend/app
+            poetry install
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Run Black
@@ -77,7 +79,9 @@ jobs:
             poetry config virtualenvs.path ~/.virtualenvs
 
         - name: Install Dependencies
-          run: poetry install
+          run: |
+            cd ./fastapi_cookie_cutter/backend/app
+            poetry install
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Run MyPy
@@ -119,7 +123,9 @@ jobs:
             poetry config virtualenvs.path ~/.virtualenvs
 
         - name: Install Dependencies
-          run: poetry install
+          run: |
+            cd ./fastapi_cookie_cutter/backend/app
+            poetry install
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Run Tests

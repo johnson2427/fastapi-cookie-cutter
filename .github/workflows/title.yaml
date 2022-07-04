@@ -39,7 +39,9 @@ jobs:
             poetry config virtualenvs.path ~/.virtualenvs
 
         - name: Install Dependencies
-          run: poetry install
+          run: |
+            cd ./fastapi_cookie_cutter/backend/app
+            poetry install
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check PR Title
