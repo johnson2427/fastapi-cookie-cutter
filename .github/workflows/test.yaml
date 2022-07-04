@@ -40,18 +40,15 @@ jobs:
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Run Black
-          run: |
-            cd fastapi_cookie_cutter/backend/app
+          run:
             poetry run black --check .
 
         - name: Run flake8
-          run: |
-            cd fastapi_cookie_cutter/backend/app
+          run:
             poetry run flake8 .
 
         - name: Run isort
-          run: |
-            cd fastapi_cookie_cutter/backend/app
+          run:
             poetry run isort --check-only .
 
     type-check:
@@ -91,8 +88,7 @@ jobs:
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Run MyPy
-          run: |
-            cd fastapi_cookie_cutter/backend/app
+          run:
             poetry run mypy .
 
     functional:
