@@ -32,6 +32,12 @@ pytest-cov = "^3.0.0"
 pytest-xdist = "^2.5.0"
 hypothesis = "^6.48.3"
 hypothesis-jsonschema = "^0.22.0"
+sqlalchemy-stubs = "^0.4"
+
+[tool.black]
+line-length = 88
+target-version = ["py37", "py38", "py39", "py310"]
+include = '\.pyi?$'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
