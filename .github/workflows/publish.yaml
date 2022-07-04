@@ -38,7 +38,9 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        cd fastapi_cookie_cutter/backend/app
+        cd fastapi_cookie_cutter
+        cd backend
+        cd app
         poetry install
       if: steps.cache.outputs.cache-hit != 'true'
         
