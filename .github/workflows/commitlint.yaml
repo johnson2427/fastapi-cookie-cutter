@@ -42,4 +42,6 @@ jobs:
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check commit history
-          run: poetry run cz check --rev-range $(git rev-list --all --reverse | head -1)..HEAD
+          run: |
+            cd fastapi_cookie_cutter/backend/app
+            poetry run cz check --rev-range $(git rev-list --all --reverse | head -1)..HEAD
