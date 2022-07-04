@@ -5,7 +5,7 @@
 # Exit in case of error
 set -e
 
-if [ ! -d ./Artemis ] ; then
+if [ ! -d ./fastapi-cookie-cutter ] ; then
     echo "Run this script from outside the project, to integrate a sibling dev-fsfp project with changes and review modifications"
     exit 1
 fi
@@ -15,8 +15,8 @@ if [ $(uname -s) = "Linux" ]; then
     sudo find ./dev-fsfp/ -type d -name __pycache__ -exec rm -r {} \+
 fi
 
-rm -rf ./Artemis/artemis/*
+rm -rf ./fastapi-cookie-cutter/fastapi-cookie-cutter/*
 
-rsync -a --exclude=node_modules ./dev-fsfp/* ./Artemis/artemis/
+rsync -a --exclude=node_modules ./dev-fsfp/* ./fastapi-cookie-cutter/fastapi-cookie-cutter/
 
-rsync -a ./dev-fsfp/{.env,.gitignore,.gitlab-ci.yml} ./Artemis/artemis/
+rsync -a ./dev-fsfp/{.env,.gitignore,.gitlab-ci.yml} ./fastapi-cookie-cutter/fastapi-cookie-cutter/

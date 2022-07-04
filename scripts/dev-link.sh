@@ -12,7 +12,7 @@ set -e
 rm -rf dev-link
 mkdir -p tmp-dev-link/frontend
 
-artemis --no-input -f ./ project_name="Dev Link"
+fastapi-cookie-cutter --no-input -f ./ project_name="Dev Link"
 
 mv ./dev-link/.env ./tmp-dev-link/
 mv ./dev-link/frontend/.env ./tmp-dev-link/frontend/
@@ -22,7 +22,7 @@ mkdir -p ./dev-link/
 
 cd ./dev-link/
 
-for f in ../artemis/* ; do
+for f in ../fastapi-cookie-cutter/* ; do
     ln -s "$f" ./
 done
 
