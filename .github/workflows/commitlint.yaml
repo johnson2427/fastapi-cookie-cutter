@@ -37,11 +37,11 @@ jobs:
 
         - name: Install Dependencies
           run: |
-            cd fastapi_cookie_cutter
-            cd backend
-            cd app
+            cd fastapi_cookie_cutter/backend/app
             poetry install
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check commit history
-          run: poetry run cz check --rev-range $(git rev-list --all --reverse | head -1)..HEAD
+          run: |
+            cd fastapi_cookie_cutter/backend/app
+            poetry run cz check --rev-range $(git rev-list --all --reverse | head -1)..HEAD
