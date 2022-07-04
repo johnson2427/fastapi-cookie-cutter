@@ -42,8 +42,8 @@ jobs:
         poetry install
       if: steps.cache.outputs.cache-hit != 'true'
         
-    - name: Build
-      run: poetry install
+#    - name: Build
+#      run: poetry install
 
 #    - name: Publish
 #      env:
