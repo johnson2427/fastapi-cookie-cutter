@@ -40,8 +40,7 @@ jobs:
 
         - name: Install Dependencies
           run: |
-            cd kerkopes/backend/app
-            poetry install
+            cd fastapi_cookie_cutter/backend/app
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check PR Title
