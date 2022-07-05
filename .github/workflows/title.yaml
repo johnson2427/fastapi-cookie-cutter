@@ -42,6 +42,8 @@ jobs:
           run: |
             cd fastapi_cookie_cutter/backend/app
             poetry install
+            python -m pip install --upgrade pip
+            pip install -U commitizen
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check PR Title
@@ -49,4 +51,4 @@ jobs:
               TITLE: ${{ github.event.pull_request.title }}
           run: |
             cd fastapi_cookie_cutter/backend/app
-            poetry run cz check --message "$TITLE"
+            cz check --message "$TITLE"
