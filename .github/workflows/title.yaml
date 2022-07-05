@@ -19,31 +19,13 @@ jobs:
           with:
               python-version: 3.9
 
-        - name: Install Poetry
-          uses: snok/install-poetry@v1
-          with:
-            virtualenvs-path: ~/.virtualenvs
-
-        - name: Cache Poetry virtualenv
-          uses: actions/cache@v2
-          id: cache
-          with:
-            path: ~/.virtualenvs
-            key: poetry-${{ hashFiles('**/poetry.lock') }}
-            restore-keys: |
-              poetry-${{ hashFiles('**/poetry.lock') }}
-
-        - name: Set Poetry config
-          run: |
-            poetry config virtualenvs.in-project false
-            poetry config virtualenvs.path ~/.virtualenvs
-
         - name: Install Dependencies
           run: |
-            cd fastapi_cookie_cutter/backend/app
+            python -m pip install --upgrade pip
+            pip install -U commitizen
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check PR Title
           env:
               TITLE: ${{ github.event.pull_request.title }}
-          run: poetry run cz check --message "$TITLE"
+          run: cz check --message "$TITLE"
