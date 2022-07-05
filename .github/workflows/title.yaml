@@ -46,6 +46,7 @@ jobs:
         - name: Check PR Title
           env:
               TITLE: ${{ github.event.pull_request.title }}
+
           run: |
             cd fastapi-cookie-cutter/backend/app
-            cz check --message "$TITLE"
+            poetry run cz check --message "$TITLE"
