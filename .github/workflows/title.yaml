@@ -41,9 +41,12 @@ jobs:
         - name: Install Dependencies
           run: |
             cd fastapi_cookie_cutter/backend/app
+            poetry install
           if: steps.cache.outputs.cache-hit != 'true'
 
         - name: Check PR Title
           env:
               TITLE: ${{ github.event.pull_request.title }}
-          run: poetry run cz check --message "$TITLE"
+          run: |
+            cd fastapi_cookie_cutter/backend/app
+            poetry run cz check --message "$TITLE"
