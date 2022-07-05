@@ -46,4 +46,4 @@ jobs:
         - name: Check PR Title
           env:
               TITLE: ${{ github.event.pull_request.title }}
-          run: cz check --message "$TITLE"
+          run: poetry run cz check --message "$TITLE"
