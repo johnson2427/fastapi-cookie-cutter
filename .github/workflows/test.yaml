@@ -96,83 +96,21 @@ jobs:
             poetry run mypy .
 
     functional:
-        runs-on: ${{ matrix.os }}
+      runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                os: [ubuntu-latest]   # eventually add `windows-latest`
-                python-version: [3.9]
-
-        env:
-          DOMAIN: localhost
-          SERVER_HOST: 'http://localhost'
-          SERVER_NAME: ''
-          STACK_NAME: fastapi-cookie-cutter-com
-          TRAEFIK_PUBLIC_NETWORK: traefik-public
-          TRAEFIK_TAG: fastapi-cookie-cutter.com
-          TRAEFIK_PUBLIC_TAG: fastapi-cookie-cutter.com
-          DOCKER_IMAGE_BACKEND: backend
-          DOCKER_IMAGE_CELERYWORKER: celeryworker
-          DOCKER_IMAGE_FRONTEND: frontend
-          BACKEND_CORS_ORIGINS: '["http://localhost"]'
-          PROJECT_NAME: fastapi-cookie-cutter
-          SECRET_KEY: 6495265f5a49676b308f337a84ed220efd48837f5e013193117a57f8bc1eca56
-          FIRST_SUPERUSER: admin@fastapi-cookie-cutter.com
-          FIRST_SUPERUSER_PASSWORD: password
-          SMTP_TLS: True
-          SMTP_PORT: 587
-          SMTP_HOST: None
-          SMTP_USER: None
-          SMTP_PASSWORD: None
-          EMAILS_FROM_EMAIL: info@fastapi-cookie-cutter.com
-          USERS_OPEN_REGISTRATION: False
-          SENTRY_DSN: ''
-          FLOWER_BASIC_AUTH: admin:password
-          POSTGRES_SERVER: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: app
-          PGADMIN_LISTEN_PORT: 5050
-          PGADMIN_DEFAULT_EMAIL: admin@fastapi-cookie-cutter.com
-          PGADMIN_DEFAULT_PASSWORD: password
-          MONGO_URL: mongodb
-          MONGO_PORT: 27017
-          MONGO_DATABASE_URI: mongodb://localhost:27017
-
-        steps:
-        - uses: actions/checkout@v2
-
-        - name: Setup Python
-          uses: actions/setup-python@v2
+      steps:
+        - uses: |
+            actions/checkout@v2
+            actions/setup-node@v1
           with:
-              python-version: ${{ matrix.python-version }}
+            node-version: 17.5.0
 
-        - name: Install Poetry
-          uses: snok/install-poetry@v1
-          with:
-            virtualenvs-path: ~/.virtualenvs
-
-        - name: Cache Poetry virtualenv
-          uses: actions/cache@v2
-          id: cache
-          with:
-            path: ~/.virtualenvs
-            key: poetry-${{ hashFiles('**/poetry.lock') }}
-            restore-keys: |
-              poetry-${{ hashFiles('**/poetry.lock') }}
-
-        - name: Set Poetry config
+        - name: Build the stack
           run: |
-            poetry config virtualenvs.in-project false
-            poetry config virtualenvs.path ~/.virtualenvs
-
-        - name: Install Dependencies
-          run: |
-            cd fastapi_cookie_cutter/backend/app
-            poetry install
-          if: steps.cache.outputs.cache-hit != 'true'
+            cd fastapi-cookie-cutter
+            docker-compose up -d
 
         - name: Run Tests
           run: |
-            cd fastapi_cookie_cutter/backend/app
-            poetry run pytest -m "not fuzzing" -n 0 -s --cov
+            cd fastapi-cookie-cutter
+            sh ./scripts/test.sh
